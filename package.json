@@ -1,0 +1,12 @@
+{
+  "name": "portfolio-suhrob",
+  "version": "1.0.0",
+  "description": "Suhrob Madaminov's Portfolio",
+  "main": "index.html",
+  "scripts": {
+    "start": "serve -s . -l $PORT"
+  },
+  "dependencies": {
+    "serve": "^14.2.4"
+  }
+}

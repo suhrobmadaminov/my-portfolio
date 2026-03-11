@@ -1,0 +1,2411 @@
+<!DOCTYPE html>
+<html lang="uz" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Suhrob Madaminov — Portfolio</title>
+  <meta name="description" content="Suhrob Madaminov — Dasturchi. Portfolio, tajriba, loyihalar va aloqa.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    :root {
+      --bg: #0a0e1a;
+      --surface: #161b2e;
+      --surface-hover: #1e2538;
+      --text: #e4e7f0;
+      --text-muted: #8b92b0;
+      --border: #2a3354;
+      --accent: #5b8def;
+      --accent-2: #7ee787;
+      --accent-glow: rgba(91, 141, 239, 0.3);
+      --danger: #ff4757;
+      --success: #7ee787;
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+      --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.3);
+      --radius: 16px;
+      --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    html[data-theme="light"] {
+      --bg: #f5f7fa;
+      --surface: #ffffff;
+      --surface-hover: #f8f9fc;
+      --text: #1a1d2e;
+      --text-muted: #6b7280;
+      --border: #e2e8f0;
+      --accent: #3b82f6;
+      --accent-2: #10b981;
+      --accent-glow: rgba(59, 130, 246, 0.2);
+      --shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% -20%, var(--accent-glow), transparent),
+        radial-gradient(ellipse 60% 50% at 80% 50%, rgba(126, 231, 135, 0.1), transparent),
+        radial-gradient(ellipse 40% 30% at 20% 80%, rgba(139, 92, 246, 0.1), transparent);
+      pointer-events: none;
+      z-index: 0;
+      animation: backgroundShift 20s ease-in-out infinite;
+    }
+
+    @keyframes backgroundShift {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0.8;
+      }
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(10, 14, 26, 0.8);
+      backdrop-filter: blur(20px) saturate(180%);
+      border-bottom: 1px solid var(--border);
+    }
+
+    html[data-theme="light"] header {
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 80px;
+      gap: 32px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      font-size: 20px;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .logo-icon {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 24px;
+      box-shadow: 0 8px 24px var(--accent-glow);
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-8px);
+      }
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 8px;
+    }
+
+    nav a {
+      padding: 10px 16px;
+      border-radius: 10px;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 15px;
+      transition: all var(--transition);
+      position: relative;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 6px;
+      left: 16px;
+      right: 16px;
+      height: 2px;
+      background: var(--accent);
+      border-radius: 2px;
+      transform: scaleX(0);
+      transition: transform var(--transition);
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: var(--text);
+      background: var(--surface-hover);
+    }
+
+    nav a.active::after {
+      transform: scaleX(1);
+    }
+
+    .header-controls {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .theme-toggle,
+    .lang-select {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all var(--transition);
+      font-size: 18px;
+    }
+
+    .lang-select {
+      width: auto;
+      padding: 0 16px;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .theme-toggle:hover,
+    .lang-select:hover {
+      background: var(--surface-hover);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 120px 0 80px;
+      display: grid;
+      grid-template-columns: 1fr 400px;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .hero-content h1 {
+      font-size: 64px;
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, var(--text), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-role {
+      font-size: 24px;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .hero-description {
+      font-size: 18px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 32px;
+    }
+
+    .hero-highlights {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .highlight-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      transition: all var(--transition);
+    }
+
+    .highlight-item:hover {
+      background: var(--accent);
+      color: white;
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .highlight-item i {
+      color: var(--accent);
+      font-size: 16px;
+    }
+
+    .highlight-item:hover i {
+      color: white;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      text-align: center;
+      transition: all var(--transition);
+    }
+
+    .stat-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-sm);
+      border-color: var(--accent);
+    }
+
+    .stat-card h3 {
+      font-size: 36px;
+      font-weight: 800;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .stat-card p {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 32px;
+    }
+
+    .btn {
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 16px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: all var(--transition);
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), #7c3aed);
+      border: none;
+      color: white;
+      box-shadow: 0 8px 24px var(--accent-glow);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 12px 32px var(--accent-glow);
+    }
+
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .tech-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      transition: all var(--transition);
+      cursor: pointer;
+    }
+
+    .tech-icon:hover {
+      transform: translateY(-4px) scale(1.1);
+      border-color: var(--accent);
+      box-shadow: 0 8px 24px var(--accent-glow);
+    }
+
+    .hero-image {
+      position: relative;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-avatar {
+      width: 100%;
+      height: 500px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2), #7c3aed);
+      background-size: 200% 200%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 120px;
+      color: white;
+      animation: float 3s ease-in-out infinite, gradientShift 4s ease-in-out infinite;
+      position: relative;
+      overflow: hidden;
+      border-radius: 24px;
+    }
+
+    .profile-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 24px;
+      transition: all var(--transition);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      border: 4px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .profile-photo:hover {
+      transform: scale(1.02);
+      box-shadow: 0 25px 80px rgba(0, 0, 0, 0.4);
+      border-color: var(--accent);
+    }
+
+    .hero-avatar::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+      animation: shimmer 3s ease-in-out infinite;
+    }
+
+    @keyframes gradientShift {
+
+      0%,
+      100% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+    }
+
+    @keyframes shimmer {
+      0% {
+        transform: translateX(-100%) translateY(-100%) rotate(45deg);
+      }
+
+      100% {
+        transform: translateX(100%) translateY(100%) rotate(45deg);
+      }
+    }
+
+    /* Section Styles */
+    section {
+      padding: 80px 0;
+      position: relative;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-title {
+      font-size: 48px;
+      font-weight: 900;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    .section-title i {
+      color: var(--accent);
+      font-size: 42px;
+    }
+
+    .section-subtitle {
+      font-size: 18px;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Projects Grid */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 24px;
+    }
+
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 32px;
+      transition: all var(--transition);
+      cursor: pointer;
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: var(--shadow);
+      border-color: var(--accent);
+      background: linear-gradient(135deg, var(--surface), var(--surface-hover));
+    }
+
+    .project-icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, var(--accent), #7c3aed);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      color: white;
+      margin-bottom: 24px;
+      box-shadow: 0 8px 24px var(--accent-glow);
+    }
+
+    .project-card h3 {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .project-card p {
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .tag {
+      padding: 6px 14px;
+      border-radius: 20px;
+      background: var(--surface-hover);
+      border: 1px solid var(--border);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+      transition: all var(--transition);
+    }
+
+    .tag:hover {
+      background: var(--accent);
+      color: white;
+      border-color: var(--accent);
+    }
+
+    .project-links {
+      display: flex;
+      gap: 12px;
+    }
+
+    .project-link {
+      flex: 1;
+      padding: 12px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: var(--surface-hover);
+      color: var(--text);
+      text-decoration: none;
+      text-align: center;
+      font-weight: 600;
+      transition: all var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .project-link:hover {
+      background: var(--accent);
+      color: white;
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    /* Skills Grid */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    .skill-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 32px;
+      transition: all var(--transition);
+    }
+
+    .skill-card:hover {
+      transform: translateY(-4px) scale(1.01);
+      box-shadow: var(--shadow-sm);
+      border-color: var(--accent);
+      background: linear-gradient(135deg, var(--surface), var(--surface-hover));
+    }
+
+    .skill-card h3 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .skill-card h3 i {
+      color: var(--accent);
+      font-size: 24px;
+    }
+
+    /* About Section */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+
+    .about-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 40px;
+    }
+
+    .about-card h3 {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .about-card h3 i {
+      color: var(--accent);
+    }
+
+    .about-card p {
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      line-height: 1.7;
+    }
+
+    .education-item {
+      background: var(--surface-hover);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 12px;
+    }
+
+    .education-item h4 {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .education-item p {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .language-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .language-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px;
+      background: var(--surface-hover);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      font-size: 14px;
+    }
+
+    .language-item span:first-child {
+      font-size: 24px;
+    }
+
+    /* Experience Timeline */
+    .timeline {
+      position: relative;
+      padding-left: 40px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(180deg, var(--accent), transparent);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 40px;
+      padding-left: 32px;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -48px;
+      top: 8px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 3px solid var(--bg);
+      box-shadow: 0 0 0 4px var(--surface);
+    }
+
+    .timeline-item h3 {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .timeline-item h4 {
+      font-size: 16px;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .timeline-item ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .timeline-item li {
+      padding-left: 24px;
+      position: relative;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .timeline-item li::before {
+      content: '▹';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: bold;
+    }
+
+    /* Certificates */
+    .cert-card {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 16px;
+      text-decoration: none;
+      color: var(--text);
+      transition: all var(--transition);
+    }
+
+    .cert-card:hover {
+      transform: translateX(8px);
+      border-color: var(--accent);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .cert-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      color: white;
+      flex-shrink: 0;
+    }
+
+    .cert-info h3 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .cert-info p {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .cert-arrow {
+      margin-left: auto;
+      font-size: 20px;
+      color: var(--text-muted);
+      transition: transform var(--transition);
+    }
+
+    .cert-card:hover .cert-arrow {
+      transform: translateX(4px);
+      color: var(--accent);
+    }
+
+    /* Contact Section */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 32px;
+    }
+
+    .contact-cards {
+      display: grid;
+      gap: 16px;
+    }
+
+    .contact-card {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px;
+      text-decoration: none;
+      color: var(--text);
+      transition: all var(--transition);
+    }
+
+    .contact-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-sm);
+      border-color: var(--accent);
+    }
+
+    .contact-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      color: white;
+      flex-shrink: 0;
+    }
+
+    .contact-info h3 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .contact-info p {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .contact-form {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 40px;
+    }
+
+    .form-group {
+      margin-bottom: 24px;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      color: var(--text);
+      font-family: inherit;
+      font-size: 15px;
+      transition: all var(--transition);
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-glow);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .error-message {
+      color: var(--danger);
+      font-size: 13px;
+      margin-top: 4px;
+    }
+
+    .success-message {
+      color: var(--success);
+      font-size: 14px;
+      margin-top: 16px;
+      text-align: center;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 60px 0 40px;
+      margin-top: 80px;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: 12px;
+    }
+
+    .social-link {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: var(--surface-hover);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text);
+      font-size: 20px;
+      text-decoration: none;
+      transition: all var(--transition);
+    }
+
+    .social-link:hover {
+      background: var(--accent);
+      color: white;
+      border-color: var(--accent);
+      transform: translateY(-4px);
+    }
+
+    .footer-copy {
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    /* Back to Top */
+    .back-to-top {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      cursor: pointer;
+      box-shadow: 0 8px 24px var(--accent-glow);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(20px);
+      transition: all var(--transition);
+      border: none;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .back-to-top:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px var(--accent-glow);
+    }
+
+    /* Responsive */
+    @media (max-width: 968px) {
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .hero-image {
+        max-width: 400px;
+        margin: 0 auto;
+      }
+
+      .hero-content h1 {
+        font-size: 48px;
+      }
+
+      .about-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-title {
+        font-size: 36px;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero-content h1 {
+        font-size: 36px;
+      }
+
+      .hero-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .projects-grid,
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .language-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-50px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(50px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.05);
+      }
+    }
+
+    .fade-in {
+      animation: fadeInUp 0.6s ease-out;
+    }
+
+    .slide-in-left {
+      animation: slideInLeft 0.8s ease-out;
+    }
+
+    .slide-in-right {
+      animation: slideInRight 0.8s ease-out;
+    }
+
+    .pulse {
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    /* Progress Bar */
+    .progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      z-index: 9999;
+      transition: width 0.1s;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="progress-bar" id="progressBar"></div>
+
+  <header>
+    <div class="container">
+      <div class="header-content">
+        <a href="#hero" class="logo">
+          <div class="logo-icon">
+            <i class="fas fa-code"></i>
+          </div>
+          <span>Suhrob</span>
+        </a>
+
+        <nav>
+          <ul>
+            <li><a href="#hero" class="active">Bosh sahifa</a></li>
+            <li><a href="#about">Men haqimda</a></li>
+            <li><a href="#projects">Loyihalar</a></li>
+            <li><a href="#skills">Ko'nikmalar</a></li>
+            <li><a href="#experience">Tajriba</a></li>
+            <li><a href="#contact">Aloqa</a></li>
+          </ul>
+        </nav>
+
+        <div class="header-controls">
+          <select class="lang-select" id="langSelect">
+            <option value="uz">🇺🇿 UZ</option>
+            <option value="en">🇺🇸 EN</option>
+            <option value="ru">🇷🇺 RU</option>
+            <option value="tr">🇹🇷 TR</option>
+          </select>
+          <button class="theme-toggle" id="themeToggle">
+            <i class="fas fa-moon"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="hero" class="hero">
+      <div class="container">
+        <div style="display: grid; grid-template-columns: 1fr 400px; gap: 60px; align-items: center;">
+          <div class="hero-content fade-in">
+            <h1><i class="fas fa-rocket"></i> Suhrob Madaminov</h1>
+            <div class="hero-role">
+              <i class="fas fa-laptop-code"></i>
+              <span>Full-Stack Dasturchi</span>
+            </div>
+            <p class="hero-description">
+              Zamonaviy texnologiyalar yordamida innovatsion yechimlar yarataman.
+              Python, HTML/CSS/JS va SQLite bilan amaliy loyihalar ustida ishlayman.
+              Toza kod, optimallashtirilgan UI/UX va foydalanuvchi tajribasiga alohida e'tibor beraman.
+            </p>
+
+            <div class="hero-highlights">
+              <div class="highlight-item">
+                <i class="fas fa-code"></i>
+                <span>Clean Code</span>
+              </div>
+              <div class="highlight-item">
+                <i class="fas fa-mobile-alt"></i>
+                <span>Responsive Design</span>
+              </div>
+              <div class="highlight-item">
+                <i class="fas fa-rocket"></i>
+                <span>Fast Performance</span>
+              </div>
+              <div class="highlight-item">
+                <i class="fas fa-users"></i>
+                <span>User Experience</span>
+              </div>
+            </div>
+
+            <div class="hero-stats">
+              <div class="stat-card">
+                <h3>1+</h3>
+                <p>Yillik Tajriba</p>
+              </div>
+              <div class="stat-card">
+                <h3>5+</h3>
+                <p>Loyihalar</p>
+              </div>
+              <div class="stat-card">
+                <h3>3+</h3>
+                <p>Texnologiyalar</p>
+              </div>
+            </div>
+
+            <div class="hero-cta">
+              <a href="#projects" class="btn btn-primary">
+                <i class="fas fa-folder-open"></i>
+                Loyihalarni ko'rish
+              </a>
+              <a href="#contact" class="btn">
+                <i class="fas fa-envelope"></i>
+                Bog'lanish
+              </a>
+            </div>
+
+            <div class="tech-stack">
+              <div class="tech-icon" title="Python">
+                <i class="fab fa-python"></i>
+              </div>
+              <div class="tech-icon" title="HTML5">
+                <i class="fab fa-html5"></i>
+              </div>
+              <div class="tech-icon" title="CSS3">
+                <i class="fab fa-css3-alt"></i>
+              </div>
+              <div class="tech-icon" title="JavaScript">
+                <i class="fab fa-js"></i>
+              </div>
+              <div class="tech-icon" title="SQLite">
+                <i class="fas fa-database"></i>
+              </div>
+              <div class="tech-icon" title="Git">
+                <i class="fab fa-git-alt"></i>
+              </div>
+              <div class="tech-icon" title="Figma">
+                <i class="fab fa-figma"></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-image slide-in-right">
+            <div class="hero-avatar pulse">
+              <img src="Suhrob copy.jpg" alt="Suhrob Madaminov" class="profile-photo">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">
+            <i class="fas fa-user-circle"></i>
+            Men haqimda
+          </h2>
+          <p class="section-subtitle">
+            Dasturlash va texnologiyaga ishtiyoqli, doimiy o'rganuvchi dasturchi
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-card fade-in slide-in-left">
+            <h3>
+              <i class="fas fa-info-circle"></i>
+              Ma'lumot
+            </h3>
+            <p>
+              2016-2025 yillarda maktabda ta'lim oldim. Hozirda Politexnikumda tahsil olayapman
+              va "Al-Xorazmiy vorislari" loyihasining faol ishtirokchisiman.
+            </p>
+            <p>
+              Dasturlashga bo'lgan qiziqishim meni Python, HTML, CSS, JavaScript va SQLite
+              texnologiyalarini chuqur o'rganishga undadi. Zamonaviy web dasturlash standartlari
+              va eng yaxshi amaliyotlarni qo'llashga harakat qilaman.
+            </p>
+
+            <h4 style="margin: 24px 0 16px; font-size: 18px;">
+              <i class="fas fa-star"></i> Yumshoq ko'nikmalar
+            </h4>
+            <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+              <span class="tag">Muloqot</span>
+              <span class="tag">Jamoada ishlash</span>
+              <span class="tag">Muammo yechish</span>
+              <span class="tag">Liderlik</span>
+              <span class="tag">Kreativlik</span>
+              <span class="tag">Vaqtni boshqarish</span>
+            </div>
+          </div>
+
+          <div class="about-card fade-in slide-in-right">
+            <h3>
+              <i class="fas fa-graduation-cap"></i>
+              Ta'lim
+            </h3>
+
+            <div class="education-item">
+              <h4><i class="fas fa-school"></i> Maktab</h4>
+              <p>2016-09 — 2025-05</p>
+            </div>
+
+            <div class="education-item">
+              <h4><i class="fas fa-university"></i> Politexnikum</h4>
+              <p>2025-09 — hozirgacha</p>
+            </div>
+
+            <div class="education-item">
+              <h4><i class="fas fa-trophy"></i> Al-Xorazmiy vorislari</h4>
+              <p>Loyiha talabasi — Algoritmik tafakkur</p>
+            </div>
+
+            <h4 style="margin: 24px 0 16px; font-size: 18px;">
+              <i class="fas fa-language"></i> Tillar
+            </h4>
+            <div class="language-grid">
+              <div class="language-item">
+                <span>🇺🇿</span>
+                <span>O'zbek — Ona tili</span>
+              </div>
+              <div class="language-item">
+                <span>🇷🇺</span>
+                <span>Rus — O'rta</span>
+              </div>
+              <div class="language-item">
+                <span>EN</span>
+                <span>Ingliz — Boshlang'ich</span>
+              </div>
+              <div class="language-item">
+                <span>🇩🇪</span>
+                <span>Nemis — Boshlang'ich</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">
+            <i class="fas fa-diagram-project"></i>
+            Loyihalarim
+          </h2>
+          <p class="section-subtitle">
+            Men ustida ishlagan va ishlab chiqayotgan loyihalar
+          </p>
+        </div>
+
+        <div class="projects-grid">
+          <div class="project-card fade-in">
+            <div class="project-icon">
+              <i class="fas fa-database"></i>
+            </div>
+            <h3>SQLite Notlar ilovasi</h3>
+            <p>
+              Python va SQLite yordamida yaratilgan CRUD funksiyalariga ega notlar tizimi.
+              Ma'lumotlarni saqlash, o'zgartirish va o'chirish imkoniyatlari.
+            </p>
+            <div class="project-tags">
+              <span class="tag">Python</span>
+              <span class="tag">SQLite</span>
+              <span class="tag">CLI</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="project-link">
+                <i class="fas fa-external-link-alt"></i>
+                Demo
+              </a>
+              <a href="https://github.com/suhrobmadaminov" target="_blank" class="project-link">
+                <i class="fab fa-github"></i>
+                GitHub
+              </a>
+            </div>
+          </div>
+
+          <div class="project-card fade-in">
+            <div class="project-icon" style="background: linear-gradient(135deg, #10b981, #059669);">
+              <i class="fas fa-globe"></i>
+            </div>
+            <h3>Responsive Portfolio</h3>
+            <p>
+              HTML, CSS va JavaScript yordamida yaratilgan to'liq responsive portfolio veb-sayti.
+              Ko'p tilli qo'llab-quvvatlash va dark/light tema rejimi.
+            </p>
+            <div class="project-tags">
+              <span class="tag">HTML</span>
+              <span class="tag">CSS</span>
+              <span class="tag">JavaScript</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="project-link">
+                <i class="fas fa-external-link-alt"></i>
+                Demo
+              </a>
+              <a href="https://github.com/suhrobmadaminov" target="_blank" class="project-link">
+                <i class="fab fa-github"></i>
+                GitHub
+              </a>
+            </div>
+          </div>
+
+          <div class="project-card fade-in">
+            <div class="project-icon" style="background: linear-gradient(135deg, #f59e0b, #d97706);">
+              <i class="fas fa-shopping-cart"></i>
+            </div>
+            <h3>E-commerce Dashboard</h3>
+            <p>
+              Zamonaviy e-commerce boshqaruv paneli. Real-time statistika,
+              mahsulotlarni boshqarish va buyurtmalarni kuzatish funksiyalari.
+            </p>
+            <div class="project-tags">
+              <span class="tag">React</span>
+              <span class="tag">Node.js</span>
+              <span class="tag">MongoDB</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="project-link">
+                <i class="fas fa-external-link-alt"></i>
+                Demo
+              </a>
+              <a href="https://github.com/suhrobmadaminov" target="_blank" class="project-link">
+                <i class="fab fa-github"></i>
+                GitHub
+              </a>
+            </div>
+          </div>
+
+          <div class="project-card fade-in" id="project-translator">
+            <div class="project-icon" style="background: linear-gradient(135deg, #6366f1, #a855f7);">
+              <i class="fas fa-language"></i>
+            </div>
+            <h3>Polyglot Translator</h3>
+            <p>
+              Real-time tarjima tizimi. Uz ↔ En ↔ Ru yo‘nalishlarida ko'p tilli tarjima va statistika paneli.
+              localStorage va offline korpus qo'llab-quvvatlanadi.
+            </p>
+            <div class="project-tags">
+              <span class="tag">HTML</span>
+              <span class="tag">CSS</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">API</span>
+            </div>
+            <div class="project-links">
+              <a href="https://suhrobmadaminov.github.io/Translate/" target="_blank" class="project-link">
+                <i class="fas fa-external-link-alt"></i>
+                Demo
+              </a>
+              <a href="https://github.com/suhrobmadaminov/Translate" target="_blank" class="project-link">
+                <i class="fab fa-github"></i>
+                GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">
+            <i class="fas fa-brain"></i>
+            Ko'nikmalar
+          </h2>
+          <p class="section-subtitle">
+            Texnologiyalar va vositalar bilan tajribam
+          </p>
+        </div>
+
+        <div class="skills-grid">
+          <div class="skill-card fade-in">
+            <h3>
+              <i class="fas fa-code"></i>
+              Dasturlash tillari
+            </h3>
+            <div class="project-tags">
+              <span class="tag">Python</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">HTML5</span>
+              <span class="tag">CSS3</span>
+              <span class="tag">SQL</span>
+            </div>
+          </div>
+
+          <div class="skill-card fade-in">
+            <h3>
+              <i class="fas fa-layer-group"></i>
+              Freymvorklar
+            </h3>
+            <div class="project-tags">
+              <span class="tag">Flask</span>
+              <span class="tag">Django</span>
+              <span class="tag">Bootstrap</span>
+              <span class="tag">Tailwind</span>
+            </div>
+          </div>
+
+          <div class="skill-card fade-in">
+            <h3>
+              <i class="fas fa-database"></i>
+              Ma'lumotlar bazasi
+            </h3>
+            <div class="project-tags">
+              <span class="tag">SQLite</span>
+              <span class="tag">PostgreSQL</span>
+              <span class="tag">MongoDB</span>
+              <span class="tag">Redis</span>
+            </div>
+          </div>
+
+          <div class="skill-card fade-in">
+            <h3>
+              <i class="fas fa-tools"></i>
+              Vositalar
+            </h3>
+            <div class="project-tags">
+              <span class="tag">Git</span>
+              <span class="tag">GitHub</span>
+              <span class="tag">VS Code</span>
+              <span class="tag">Figma</span>
+            </div>
+          </div>
+
+          <div class="skill-card fade-in">
+            <h3>
+              <i class="fas fa-palette"></i>
+              Dizayn
+            </h3>
+            <div class="project-tags">
+              <span class="tag">UI/UX</span>
+              <span class="tag">Responsive</span>
+              <span class="tag">Prototyping</span>
+              <span class="tag">Wireframing</span>
+            </div>
+          </div>
+
+          <div class="skill-card fade-in">
+            <h3>
+              <i class="fas fa-robot"></i>
+              AI & Avtomatlashtirish
+            </h3>
+            <div class="project-tags">
+              <span class="tag">Prompting</span>
+              <span class="tag">Automation</span>
+              <span class="tag">APIs</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">
+            <i class="fas fa-briefcase"></i>
+            Ish tajribasi
+          </h2>
+          <p class="section-subtitle">
+            Professional rivojlanish yo'lim
+          </p>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-item fade-in">
+            <h3>Junior Full-Stack Dasturchi</h3>
+            <h4>Freelance / Mustaqil — 2024 — hozirgacha</h4>
+            <ul>
+              <li>HTML, CSS va JavaScript yordamida responsive veb-sahifalar yaratish</li>
+              <li>Python va SQLite bilan backend tizimlarni ishlab chiqish</li>
+              <li>Zamonaviy UI/UX dizayn tamoyillarini qo'llash</li>
+              <li>Git va GitHub yordamida versiyani boshqarish</li>
+              <li>Texnik hujjatlashtirish va kod optimizatsiyasi</li>
+            </ul>
+          </div>
+
+          <div class="timeline-item fade-in">
+            <h3>Web Development Intern</h3>
+            <h4>IT Study — 2024</h4>
+            <ul>
+              <li>Web dizayn asoslarini o'rganish</li>
+              <li>Real loyihalar ustida amaliy tajriba</li>
+              <li>Jamoa bilan hamkorlik qilish ko'nikmalari</li>
+              <li>Modern web texnologiyalari bilan tanishish</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="certificates" style="background: var(--surface); padding: 80px 0;">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">
+            <i class="fas fa-certificate"></i>
+            Sertifikatlar
+          </h2>
+          <p class="section-subtitle">
+            Professional rivojlanish va o'quv yutuqlari
+          </p>
+        </div>
+
+        <div style="max-width: 800px; margin: 0 auto;">
+          <a href="https://drive.google.com/file/d/1LT_VwjoMhOnFKT2KTh-dQJpQu2AF0pm1/view?usp=sharing" target="_blank"
+            class="cert-card fade-in">
+            <div class="cert-icon">
+              <i class="fas fa-award"></i>
+            </div>
+            <div class="cert-info">
+              <h3>Python Foundation Certificate</h3>
+              <p>Online kurs — 2024</p>
+            </div>
+            <i class="fas fa-arrow-right cert-arrow"></i>
+          </a>
+
+          <a href="https://drive.google.com/file/d/1LT_VwjoMhOnFKT2KTh-dQJpQu2AF0pm1/view?usp=sharing" target="_blank"
+            class="cert-card fade-in">
+            <div class="cert-icon" style="background: linear-gradient(135deg, #10b981, #059669);">
+              <i class="fas fa-graduation-cap"></i>
+            </div>
+            <div class="cert-info">
+              <h3>Web Fundamentals</h3>
+              <p>Online kurs — 2024</p>
+            </div>
+            <i class="fas fa-arrow-right cert-arrow"></i>
+          </a>
+
+          <a href="https://drive.google.com/file/d/1LT_VwjoMhOnFKT2KTh-dQJpQu2AF0pm1/view?usp=sharing" target="_blank"
+            class="cert-card fade-in">
+            <div class="cert-icon" style="background: linear-gradient(135deg, #f59e0b, #d97706);">
+              <i class="fas fa-palette"></i>
+            </div>
+            <div class="cert-info">
+              <h3>Web Design Sertifikati</h3>
+              <p>IT Study — 2025-06-08</p>
+            </div>
+            <i class="fas fa-arrow-right cert-arrow"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">
+            <i class="fas fa-paper-plane"></i>
+            Bog'lanish
+          </h2>
+          <p class="section-subtitle">
+            Savollaringiz bormi? Men bilan bog'laning!
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-cards">
+            <a href="https://github.com/suhrobmadaminov" target="_blank" class="contact-card fade-in">
+              <div class="contact-icon" style="background: #24292f;">
+                <i class="fab fa-github"></i>
+              </div>
+              <div class="contact-info">
+                <h3>GitHub</h3>
+                <p>Loyihalarim va kodlarim</p>
+              </div>
+            </a>
+
+
+            <a href="https://www.linkedin.com/in/suhrobmadaminov" target="_blank" class="contact-card fade-in">
+              <div class="contact-icon" style="background: #0A66C2;">
+                <i class="fab fa-linkedin"></i>
+              </div>
+              <div class="contact-info">
+                <h3>LinkedIn</h3>
+                <p>Professional tarmoq</p>
+              </div>
+            </a>
+
+            <a href="tel:+998950517209" class="contact-card fade-in">
+              <div class="contact-icon" style="background: var(--accent);">
+                <i class="fas fa-phone"></i>
+              </div>
+              <div class="contact-info">
+                <h3>Telefon</h3>
+                <p>+998 95 051 72 09</p>
+              </div>
+            </a>
+          </div>
+
+          <div class="contact-form fade-in">
+            <form id="contactForm">
+              <div class="form-group">
+                <label for="name">
+                  <i class="fas fa-user"></i> Ismingiz
+                </label>
+                <input type="text" id="name" placeholder="Ismingizni kiriting" required>
+                <div class="error-message" id="nameError"></div>
+              </div>
+
+              <div class="form-group">
+                <label for="email">
+                  <i class="fas fa-envelope"></i> Email
+                </label>
+                <input type="email" id="email" placeholder="emailingiz@example.com" required>
+                <div class="error-message" id="emailError"></div>
+              </div>
+
+              <div class="form-group">
+                <label for="message">
+                  <i class="fas fa-comment"></i> Xabar
+                </label>
+                <textarea id="message" placeholder="Xabaringizni yozing..." required></textarea>
+                <div class="error-message" id="messageError"></div>
+              </div>
+
+              <button type="submit" class="btn btn-primary" style="width: 100%;">
+                <i class="fas fa-paper-plane"></i>
+                Xabar yuborish
+              </button>
+
+              <div class="success-message" id="successMessage"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-socials">
+          <a href="https://github.com/suhrobmadaminov" target="_blank" class="social-link" title="GitHub">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/suhrobmadaminov" target="_blank" class="social-link" title="LinkedIn">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href="https://www.instagram.com/suhrobmadaminov" target="_blank" class="social-link" title="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="mailto:suhrobmadaminov@gmail.com" class="social-link" title="Email">
+            <i class="fas fa-envelope"></i>
+          </a>
+        </div>
+        <div class="footer-copy">
+          © <span id="year"></span> Suhrob Madaminov. Barcha huquqlar himoyalangan.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="backToTop">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <script>
+    // Translations
+    const translations = {
+      uz: {
+        nav: {
+          home: 'Bosh sahifa',
+          about: 'Men haqimda',
+          projects: 'Loyihalar',
+          skills: 'Ko\'nikmalar',
+          experience: 'Tajriba',
+          contact: 'Aloqa'
+        },
+        hero: {
+          title: 'Suhrob Madaminov',
+          role: 'Full-Stack Dasturchi',
+          description: 'Zamonaviy texnologiyalar yordamida innovatsion yechimlar yarataman. Python, HTML/CSS/JS va SQLite bilan amaliy loyihalar ustida ishlayman. Toza kod, optimallashtirilgan UI/UX va foydalanuvchi tajribasiga alohida e\'tibor beraman.',
+          stats: {
+            experience: 'Yillik Tajriba',
+            projects: 'Loyihalar',
+            technologies: 'Texnologiyalar'
+          },
+          buttons: {
+            viewProjects: 'Loyihalarni ko\'rish',
+            contact: 'Bog\'lanish'
+          }
+        },
+        about: {
+          title: 'Men haqimda',
+          subtitle: 'Dasturlash va texnologiyaga ishtiyoqli, doimiy o\'rganuvchi dasturchi',
+          info: {
+            title: 'Ma\'lumot',
+            text1: '2016-2025 yillarda maktabda ta\'lim oldim. Hozirda Politexnikumda tahsil olayapman va "Al-Xorazmiy vorislari" loyihasining faol ishtirokchisiman.',
+            text2: 'Dasturlashga bo\'lgan qiziqishim meni Python, HTML, CSS, JavaScript va SQLite texnologiyalarini chuqur o\'rganishga undadi. Zamonaviy web dasturlash standartlari va eng yaxshi amaliyotlarni qo\'llashga harakat qilaman.',
+            softSkills: 'Yumshoq ko\'nikmalar'
+          },
+          education: {
+            title: 'Ta\'lim',
+            school: 'Maktab',
+            polytechnic: 'Politexnikum',
+            project: 'Al-Xorazmiy vorislari',
+            languages: 'Tillar'
+          }
+        },
+        projects: {
+          title: 'Loyihalarim',
+          subtitle: 'Men ustida ishlagan va ishlab chiqayotgan loyihalar',
+          list: [
+            {
+              title: 'SQLite Notlar ilovasi',
+              desc: 'Python va SQLite yordamida yaratilgan CRUD funksiyalariga ega notlar tizimi. Ma\'lumotlarni saqlash, o\'zgartirish va o\'chirish imkoniyatlari.'
+            },
+            {
+              title: 'Responsive Portfolio',
+              desc: 'HTML, CSS va JavaScript yordamida yaratilgan to\'liq responsive portfolio veb-sayti. Ko\'p tilli qo\'llab-quvvatlash va dark/light tema rejimi.'
+            },
+            {
+              title: 'E-commerce Dashboard',
+              desc: 'Zamonaviy e-commerce boshqaruv paneli. Real-time statistika, mahsulotlarni boshqarish va buyurtmalarni kuzatish funksiyalari.'
+            },
+            {
+              title: 'Polyglot Translator',
+              desc: 'Real-time tarjima tizimi. Uz ↔ En ↔ Ru yo‘nalishlarida ko\'p tilli tarjima va statistika paneli. localStorage va offline korpus qo\'llab-quvvatlanadi.'
+            }
+          ]
+        },
+        skills: {
+          title: 'Ko\'nikmalar',
+          subtitle: 'Texnologiyalar va vositalar bilan tajribam'
+        },
+        experience: {
+          title: 'Ish tajribasi',
+          subtitle: 'Professional rivojlanish yo\'lim'
+        },
+        certificates: {
+          title: 'Sertifikatlar',
+          subtitle: 'Professional rivojlanish va o\'quv yutuqlari'
+        },
+        contact: {
+          title: 'Bog\'lanish',
+          subtitle: 'Savollaringiz bormi? Men bilan bog\'laning!',
+          form: {
+            name: 'Ismingiz',
+            email: 'Email',
+            message: 'Xabar',
+            send: 'Xabar yuborish'
+          }
+        },
+        footer: {
+          copyright: 'Barcha huquqlar himoyalangan.'
+        }
+      },
+      en: {
+        nav: {
+          home: 'Home',
+          about: 'About',
+          projects: 'Projects',
+          skills: 'Skills',
+          experience: 'Experience',
+          contact: 'Contact'
+        },
+        hero: {
+          title: 'Suhrob Madaminov',
+          role: 'Full-Stack Developer',
+          description: 'I create innovative solutions using modern technologies. I work on practical projects with Python, HTML/CSS/JS and SQLite. I pay special attention to clean code, optimized UI/UX and user experience.',
+          stats: {
+            experience: 'Years Experience',
+            projects: 'Projects',
+            technologies: 'Technologies'
+          },
+          buttons: {
+            viewProjects: 'View Projects',
+            contact: 'Contact'
+          }
+        },
+        about: {
+          title: 'About Me',
+          subtitle: 'Passionate about programming and technology, constantly learning developer',
+          info: {
+            title: 'Information',
+            text1: 'I studied at school from 2016-2025. Currently studying at Polytechnic and I am an active participant of the "Al-Khwarizmi Heirs" project.',
+            text2: 'My interest in programming led me to deeply study Python, HTML, CSS, JavaScript and SQLite technologies. I try to apply modern web programming standards and best practices.',
+            softSkills: 'Soft Skills'
+          },
+          education: {
+            title: 'Education',
+            school: 'School',
+            polytechnic: 'Polytechnic',
+            project: 'Al-Khwarizmi Heirs',
+            languages: 'Languages'
+          }
+        },
+        projects: {
+          title: 'My Projects',
+          subtitle: 'Projects I have worked on and am developing',
+          list: [
+            {
+              title: 'SQLite Notes App',
+              desc: 'Notes system with CRUD functions created using Python and SQLite. Capabilities for saving, modifying, and deleting data.'
+            },
+            {
+              title: 'Responsive Portfolio',
+              desc: 'A fully responsive portfolio website created using HTML, CSS, and JavaScript. Multi-language support and dark/light theme mode.'
+            },
+            {
+              title: 'E-commerce Dashboard',
+              desc: 'Modern e-commerce management panel. Real-time statistics, product management, and order tracking features.'
+            },
+            {
+              title: 'Polyglot Translator',
+              desc: 'Real-time translation system. Multi-language translation in Uz ↔ En ↔ Ru directions and statistics panel. localStorage and offline corpus supported.'
+            }
+          ]
+        },
+        skills: {
+          title: 'Skills',
+          subtitle: 'My experience with technologies and tools'
+        },
+        experience: {
+          title: 'Work Experience',
+          subtitle: 'My professional development path'
+        },
+        certificates: {
+          title: 'Certificates',
+          subtitle: 'Professional development and educational achievements'
+        },
+        contact: {
+          title: 'Contact',
+          subtitle: 'Have questions? Contact me!',
+          form: {
+            name: 'Your Name',
+            email: 'Email',
+            message: 'Message',
+            send: 'Send Message'
+          }
+        },
+        footer: {
+          copyright: 'All rights reserved.'
+        }
+      },
+      ru: {
+        nav: {
+          home: 'Главная',
+          about: 'О себе',
+          projects: 'Проекты',
+          skills: 'Навыки',
+          experience: 'Опыт',
+          contact: 'Контакты'
+        },
+        hero: {
+          title: 'Сухроб Мадаминов',
+          role: 'Full-Stack Разработчик',
+          description: 'Создаю инновационные решения с использованием современных технологий. Работаю над практическими проектами с Python, HTML/CSS/JS и SQLite. Особое внимание уделяю чистому коду, оптимизированному UI/UX и пользовательскому опыту.',
+          stats: {
+            experience: 'Лет Опыта',
+            projects: 'Проектов',
+            technologies: 'Технологий'
+          },
+          buttons: {
+            viewProjects: 'Посмотреть Проекты',
+            contact: 'Связаться'
+          }
+        },
+        about: {
+          title: 'О себе',
+          subtitle: 'Увлеченный программированием и технологиями, постоянно обучающийся разработчик',
+          info: {
+            title: 'Информация',
+            text1: 'Учился в школе с 2016-2025. В настоящее время учусь в Политехникуме и являюсь активным участником проекта "Наследники Аль-Хорезми".',
+            text2: 'Мой интерес к программированию привел меня к глубокому изучению технологий Python, HTML, CSS, JavaScript и SQLite. Стараюсь применять современные стандарты веб-программирования и лучшие практики.',
+            softSkills: 'Мягкие Навыки'
+          },
+          education: {
+            title: 'Образование',
+            school: 'Школа',
+            polytechnic: 'Политехникум',
+            project: 'Наследники Аль-Хорезми',
+            languages: 'Языки'
+          }
+        },
+        projects: {
+          title: 'Мои Проекты',
+          subtitle: 'Проекты, над которыми я работал и разрабатываю',
+          list: [
+            {
+              title: 'Приложение для заметок SQLite',
+              desc: 'Система заметок с функциями CRUD, созданная на Python и SQLite. Возможности сохранения, изменения и удаления данных.'
+            },
+            {
+              title: 'Адаптивное Портфолио',
+              desc: 'Полностью адаптивный веб-сайт портфолио, созданный с использованием HTML, CSS и JavaScript. Мультиязычная поддержка и темный/светлый режим темы.'
+            },
+            {
+              title: 'Панель управления E-commerce',
+              desc: 'Современная панель управления электронной коммерцией. Статистика в реальном времени, управление продуктами и функции отслеживания заказов.'
+            },
+            {
+              title: 'Polyglot Translator',
+              desc: 'Система перевода в реальном времени. Многоязычный перевод в направлениях Uz ↔ En ↔ Ru и панель статистики. Поддержка localStorage и оффлайн-корпуса.'
+            }
+          ]
+        },
+        skills: {
+          title: 'Навыки',
+          subtitle: 'Мой опыт с технологиями и инструментами'
+        },
+        experience: {
+          title: 'Опыт Работы',
+          subtitle: 'Мой путь профессионального развития'
+        },
+        certificates: {
+          title: 'Сертификаты',
+          subtitle: 'Профессиональное развитие и образовательные достижения'
+        },
+        contact: {
+          title: 'Контакты',
+          subtitle: 'Есть вопросы? Свяжитесь со мной!',
+          form: {
+            name: 'Ваше Имя',
+            email: 'Email',
+            message: 'Сообщение',
+            send: 'Отправить Сообщение'
+          }
+        },
+        footer: {
+          copyright: 'Все права защищены.'
+        }
+      },
+      tr: {
+        nav: {
+          home: 'Ana Sayfa',
+          about: 'Hakkımda',
+          projects: 'Projeler',
+          skills: 'Yetenekler',
+          experience: 'Deneyim',
+          contact: 'İletişim'
+        },
+        hero: {
+          title: 'Suhrob Madaminov',
+          role: 'Full-Stack Geliştirici',
+          description: 'Modern teknolojileri kullanarak yenilikçi çözümler yaratıyorum. Python, HTML/CSS/JS ve SQLite ile pratik projeler üzerinde çalışıyorum. Temiz kod, optimize edilmiş UI/UX ve kullanıcı deneyimine özel dikkat gösteriyorum.',
+          stats: {
+            experience: 'Yıl Deneyim',
+            projects: 'Proje',
+            technologies: 'Teknoloji'
+          },
+          buttons: {
+            viewProjects: 'Projeleri Gör',
+            contact: 'İletişim'
+          }
+        },
+        about: {
+          title: 'Hakkımda',
+          subtitle: 'Programlamaya ve teknolojiye tutkulu, sürekli öğrenen geliştirici',
+          info: {
+            title: 'Bilgi',
+            text1: '2016-2025 yılları arasında okulda eğitim aldım. Şu anda Politeknik\'te okuyorum ve "El-Harezmi Mirasçıları" projesinin aktif katılımcısıyım.',
+            text2: 'Programlamaya olan ilgim beni Python, HTML, CSS, JavaScript ve SQLite teknolojilerini derinlemesine öğrenmeye yönlendirdi. Modern web programlama standartlarını ve en iyi uygulamaları uygulamaya çalışıyorum.',
+            softSkills: 'Yumuşak Beceriler'
+          },
+          education: {
+            title: 'Eğitim',
+            school: 'Okul',
+            polytechnic: 'Politeknik',
+            project: 'El-Harezmi Mirasçıları',
+            languages: 'Diller'
+          }
+        },
+        projects: {
+          title: 'Projelerim',
+          subtitle: 'Üzerinde çalıştığım ve geliştirdiğim projeler',
+          list: [
+            {
+              title: 'SQLite Not Uygulaması',
+              desc: 'Python ve SQLite kullanılarak oluşturulan CRUD fonksiyonlarına sahip not sistemi. Veri kaydetme, değiştirme ve silme özellikleri.'
+            },
+            {
+              title: 'Duyarlı Portföy',
+              desc: 'HTML, CSS ve JavaScript kullanılarak oluşturulmuş tam duyarlı portföy web sitesi. Çok dilli destek ve karanlık/aydınlık tema modu.'
+            },
+            {
+              title: 'E-ticaret Paneli',
+              desc: 'Modern e-ticaret yönetim paneli. Gerçek zamanlı istatistikler, ürün yönetimi ve sipariş takip işlevleri.'
+            },
+            {
+              title: 'Polyglot Çevirmen',
+              desc: 'Gerçek zamanlı çeviri sistemi. Uz ↔ En ↔ Ru yönlerinde çok dilli çeviri ve istatistik paneli. localStorage ve çevrimdışı külliyat desteklenir.'
+            }
+          ]
+        },
+        skills: {
+          title: 'Yetenekler',
+          subtitle: 'Teknolojiler ve araçlarla deneyimim'
+        },
+        experience: {
+          title: 'İş Deneyimi',
+          subtitle: 'Profesyonel gelişim yolum'
+        },
+        certificates: {
+          title: 'Sertifikalar',
+          subtitle: 'Profesyonel gelişim ve eğitim başarıları'
+        },
+        contact: {
+          title: 'İletişim',
+          subtitle: 'Sorularınız var mı? Benimle iletişime geçin!',
+          form: {
+            name: 'Adınız',
+            email: 'Email',
+            message: 'Mesaj',
+            send: 'Mesaj Gönder'
+          }
+        },
+        footer: {
+          copyright: 'Tüm hakları saklıdır.'
+        }
+      }
+    };
+
+    let currentLanguage = localStorage.getItem('language') || 'uz';
+
+    // Current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Theme Toggle
+    const themeToggle = document.getElementById('themeToggle');
+    const html = document.documentElement;
+
+    const currentTheme = localStorage.getItem('theme') || 'dark';
+    html.setAttribute('data-theme', currentTheme);
+    updateThemeIcon();
+
+    themeToggle.addEventListener('click', () => {
+      const newTheme = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      updateThemeIcon();
+    });
+
+    function updateThemeIcon() {
+      const icon = themeToggle.querySelector('i');
+      if (html.getAttribute('data-theme') === 'dark') {
+        icon.className = 'fas fa-sun';
+      } else {
+        icon.className = 'fas fa-moon';
+      }
+    }
+
+    // Language functions
+    function updateLanguage(lang) {
+      currentLanguage = lang;
+      localStorage.setItem('language', lang);
+
+      const t = translations[lang];
+
+      // Update navigation
+      document.querySelector('nav a[href="#hero"]').textContent = t.nav.home;
+      document.querySelector('nav a[href="#about"]').textContent = t.nav.about;
+      document.querySelector('nav a[href="#projects"]').textContent = t.nav.projects;
+      document.querySelector('nav a[href="#skills"]').textContent = t.nav.skills;
+      document.querySelector('nav a[href="#experience"]').textContent = t.nav.experience;
+      document.querySelector('nav a[href="#contact"]').textContent = t.nav.contact;
+
+      // Update hero section
+      document.querySelector('.hero-content h1').innerHTML = `<i class="fas fa-rocket"></i> ${t.hero.title}`;
+      document.querySelector('.hero-role span').textContent = t.hero.role;
+      document.querySelector('.hero-description').textContent = t.hero.description;
+      document.querySelector('.stat-card:nth-child(1) p').textContent = t.hero.stats.experience;
+      document.querySelector('.stat-card:nth-child(2) p').textContent = t.hero.stats.projects;
+      document.querySelector('.stat-card:nth-child(3) p').textContent = t.hero.stats.technologies;
+      document.querySelector('.btn-primary').innerHTML = `<i class="fas fa-folder-open"></i> ${t.hero.buttons.viewProjects}`;
+      document.querySelector('.btn:not(.btn-primary)').innerHTML = `<i class="fas fa-envelope"></i> ${t.hero.buttons.contact}`;
+
+      // Update about section
+      document.querySelector('#about .section-title').innerHTML = `<i class="fas fa-user-circle"></i> ${t.about.title}`;
+      document.querySelector('#about .section-subtitle').textContent = t.about.subtitle;
+      document.querySelector('.about-card:nth-child(1) h3').innerHTML = `<i class="fas fa-info-circle"></i> ${t.about.info.title}`;
+      document.querySelector('.about-card:nth-child(1) p:nth-child(2)').textContent = t.about.info.text1;
+      document.querySelector('.about-card:nth-child(1) p:nth-child(3)').textContent = t.about.info.text2;
+      document.querySelector('.about-card:nth-child(1) h4').innerHTML = `<i class="fas fa-star"></i> ${t.about.info.softSkills}`;
+      document.querySelector('.about-card:nth-child(2) h3').innerHTML = `<i class="fas fa-graduation-cap"></i> ${t.about.education.title}`;
+      document.querySelector('.about-card:nth-child(2) h4').innerHTML = `<i class="fas fa-language"></i> ${t.about.education.languages}`;
+
+      // Update other sections
+      document.querySelector('#projects .section-title').innerHTML = `<i class="fas fa-diagram-project"></i> ${t.projects.title}`;
+      document.querySelector('#projects .section-subtitle').textContent = t.projects.subtitle;
+      document.querySelector('#skills .section-title').innerHTML = `<i class="fas fa-brain"></i> ${t.skills.title}`;
+      document.querySelector('#skills .section-subtitle').textContent = t.skills.subtitle;
+      document.querySelector('#experience .section-title').innerHTML = `<i class="fas fa-briefcase"></i> ${t.experience.title}`;
+      document.querySelector('#experience .section-subtitle').textContent = t.experience.subtitle;
+      document.querySelector('#certificates .section-title').innerHTML = `<i class="fas fa-certificate"></i> ${t.certificates.title}`;
+      document.querySelector('#certificates .section-subtitle').textContent = t.certificates.subtitle;
+      document.querySelector('#contact .section-title').innerHTML = `<i class="fas fa-paper-plane"></i> ${t.contact.title}`;
+      document.querySelector('#contact .section-subtitle').textContent = t.contact.subtitle;
+
+      // Update projects
+      const projectCards = document.querySelectorAll('.project-card');
+      t.projects.list.forEach((proj, index) => {
+        if (projectCards[index]) {
+          projectCards[index].querySelector('h3').textContent = proj.title;
+          projectCards[index].querySelector('p').textContent = proj.desc;
+        }
+      });
+
+      // Update form
+      document.querySelector('label[for="name"]').innerHTML = `<i class="fas fa-user"></i> ${t.contact.form.name}`;
+      document.querySelector('label[for="email"]').innerHTML = `<i class="fas fa-envelope"></i> ${t.contact.form.email}`;
+      document.querySelector('label[for="message"]').innerHTML = `<i class="fas fa-comment"></i> ${t.contact.form.message}`;
+      document.querySelector('button[type="submit"]').innerHTML = `<i class="fas fa-paper-plane"></i> ${t.contact.form.send}`;
+
+      // Update footer
+      document.querySelector('.footer-copy').innerHTML = `© <span id="year"></span> Suhrob Madaminov. ${t.footer.copyright}`;
+      document.getElementById('year').textContent = new Date().getFullYear();
+    }
+
+    // Initialize language
+    updateLanguage(currentLanguage);
+
+    // Smooth Scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // Active Navigation
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('nav a');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (scrollY >= sectionTop - 100) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+          link.classList.add('active');
+        }
+      });
+    });
+
+    // Back to Top Button
+    const backToTop = document.getElementById('backToTop');
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 500) {
+        backToTop.classList.add('visible');
+      } else {
+        backToTop.classList.remove('visible');
+      }
+    });
+
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Progress Bar
+    const progressBar = document.getElementById('progressBar');
+
+    window.addEventListener('scroll', () => {
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
+      const scrollTop = window.scrollY;
+      const scrollPercent = (scrollTop / (documentHeight - windowHeight)) * 100;
+      progressBar.style.width = scrollPercent + '%';
+    });
+
+    // Form Validation
+    const contactForm = document.getElementById('contactForm');
+    const nameInput = document.getElementById('name');
+    const emailInput = document.getElementById('email');
+    const messageInput = document.getElementById('message');
+    const successMessage = document.getElementById('successMessage');
+
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      // Clear previous errors
+      document.getElementById('nameError').textContent = '';
+      document.getElementById('emailError').textContent = '';
+      document.getElementById('messageError').textContent = '';
+      successMessage.textContent = '';
+
+      let isValid = true;
+
+      // Validate name
+      if (nameInput.value.trim().length < 2) {
+        document.getElementById('nameError').textContent = 'Ism kamida 2 ta belgidan iborat bo\'lishi kerak';
+        isValid = false;
+      }
+
+      // Validate email
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(emailInput.value)) {
+        document.getElementById('emailError').textContent = 'To\'g\'ri email manzilini kiriting';
+        isValid = false;
+      }
+
+      // Validate message
+      if (messageInput.value.trim().length < 10) {
+        document.getElementById('messageError').textContent = 'Xabar kamida 10 ta belgidan iborat bo\'lishi kerak';
+        isValid = false;
+      }
+
+      if (isValid) {
+        // Simulate form submission
+        successMessage.textContent = '✓ Xabaringiz muvaffaqiyatli yuborildi! Tez orada javob beraman.';
+        successMessage.style.display = 'block';
+        contactForm.reset();
+
+        // Open mailto (optional fallback)
+        setTimeout(() => {
+          window.location.href = `mailto:suhrobmadaminov@gmail.com?subject=Portfolio xabari - ${nameInput.value}&body=${messageInput.value}%0A%0AEmail: ${emailInput.value}`;
+        }, 1000);
+      }
+    });
+
+    // Intersection Observer for fade-in animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.fade-in').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(30px)';
+      el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+      observer.observe(el);
+    });
+
+    // Tech stack hover effect
+    document.querySelectorAll('.tech-icon').forEach(icon => {
+      icon.addEventListener('mouseenter', function () {
+        this.style.transform = 'translateY(-8px) scale(1.15) rotate(5deg)';
+      });
+      icon.addEventListener('mouseleave', function () {
+        this.style.transform = 'translateY(0) scale(1) rotate(0)';
+      });
+    });
+
+    // Language selector
+    const langSelect = document.getElementById('langSelect');
+    langSelect.value = currentLanguage;
+    langSelect.addEventListener('change', (e) => {
+      updateLanguage(e.target.value);
+    });
+  </script>
+</body>
+
+</html>
